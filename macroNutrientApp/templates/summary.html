@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Styling -->
+<style>
+    body {
+        background-color: #f4f7f6;
+        font-family: 'Arial', sans-serif;
+    }
+    .container-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        padding: 40px;
+    }
+    .info-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    .info-card {
+        width: 300px;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        text-align: center;
+    }
+    h1 {
+        color: #2c3e50;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+        padding-top: 80px; /* Ensures space below the navbar */
+    }
+    p {
+        font-size: 18px;
+        font-weight: 500;
+        color: #34495e;
+        margin: 10px 0;
+    }
+    .btn-custom {
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        text-transform: uppercase;
+        background-color: #e74c3c;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    .btn-custom:hover {
+        background-color: #c0392b;
+    }
+</style>
+
+<!-- Content -->
+<div class="container mt-5">
+    <h1>Summary</h1>
+    <div class="container-wrapper">
+        <div class="info-section">
+            <div class="info-card">
+                <p><strong>Total Meals:</strong> {{ total_meals }}</p>
+                <p><strong>Total Calories:</strong> {{ total_calories }}</p>
+            </div>
+            <div class="info-card">
+                <p><strong>Total Protein:</strong> {{ total_protein }}</p>
+                <p><strong>Total Carbs:</strong> {{ total_carbs }}</p>
+                <p><strong>Total Fat:</strong> {{ total_fat }}</p>
+            </div>
+            <div class="info-card">
+                
+                <p><strong>Target Date:</strong> {{ goal_date }}</p>
+                <p><strong>Days Left:</strong> {{ days_left }}</p>
+            </div>
+        </div>
+        <a href="{% url 'userlogin' %}" class="btn btn-custom">Back to Home</a>
+    </div>
+</div>
+
+{% endblock %}

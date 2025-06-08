@@ -1,0 +1,85 @@
+body{
+    background: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
+}
+
+.entry{
+    text-align: center;
+    padding-top: -35px;
+    background-color: rgb(217, 172, 180);
+}
+
+.entrymeal{
+    align-items: center;
+    background-color:rgba(157, 99, 109, 0.781);
+    width: 50%; width: 50%;
+    height: 50vh;
+    text-align: center;
+    margin: 25px;
+    margin-top: 0px;
+    margin-left: 25%;
+    padding-top:45px;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  
+    font-size: 25px;
+}
+.form-group{
+    padding: 20px;
+}
+.mealdatetime{
+    margin-right: 10px;
+}
+.foodsearch{
+    margin-right: 10px;
+}
+.quantity{
+    margin-right: 10px;
+}
+.form-group{
+    margin-right: 20px;
+}
+
+#summary{
+    text-align: center;
+     padding: 20px;
+ }
+ #summary .container{
+     border: 2px;
+     border-radius: 30px;
+     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+     background-color: lightcoral
+     
+ }
+
+
+ #editdelete{
+    /* background-color: aquamarine; */
+     text-align: center;
+     padding: 35px;
+ }
+.features{
+    border: 2px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color:#b9aa97;
+    padding-top: 15px;
+    
+}
+.addfeatures {
+    margin-top: 20px;
+}
+
+.addfeatures button {
+    margin-right: 10px;
+}
+#meal-notes {
+    margin-top: 20px;
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#meal-notes:focus {
+    outline: none;
+    border-color: #007bff;
+}

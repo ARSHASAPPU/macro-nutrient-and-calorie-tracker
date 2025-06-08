@@ -1,0 +1,27 @@
+#hero {
+    position: relative;
+    height: 800px;
+    overflow: hidden;
+    
+}
+
+#hero img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.heroo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+}
+.btn1{
+    width: 50%;
+}
+

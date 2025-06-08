@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- meal entry section -->
+<div class="container mt-5 pt-5">
+    <center> 
+        <h1>Food Database</h1><br>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Carbs</th>
+                    <th>Fat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for food in foods %}
+                <tr>
+                    <td>{{ food.name }}</td>
+                    <td>{{ food.calories }}</td>
+                    <td>{{ food.protein }}</td>
+                    <td>{{ food.carbs }}</td>
+                    <td>{{ food.fat }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+    </center><br>
+
+    <center><a href= "{% url 'userlogin' %}" class="btn btn-danger">Back to userlogin</a></center>
+
+
+</div>
+
+
+
+
+{% endblock %}

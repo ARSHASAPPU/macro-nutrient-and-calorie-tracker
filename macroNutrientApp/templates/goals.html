@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="goal-setting" class="goal-setting-section">
+  <div class="container" style="max-width: 800px; margin: auto;">
+    
+    <h2 class="text-center mt-5">Your Goals</h2>
+    
+    <table class="table table-striped mt-3">
+      <thead class="thead-dark">
+        <tr>
+          <th>Goal Type</th>
+          <th>Target Metrics</th>
+          <th>Timeframe</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for goal in existing_goals %}
+          <tr>
+            <td>{{ goal.goal_type }}</td>
+            <td>{{ goal.target_metrics }}</td>
+            <td>{{ goal.timeframe }}</td>
+            <td>
+              <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#editGoalModal{{ goal.id }}">Edit</button>
+              <a href="{% url 'delete_goal' goal.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+          </tr>
+          
+          <!-- Edit Goal Modal -->
+          <div class="modal fade" id="editGoalModal{{ goal.id }}" tabindex="-1" aria-labelledby="editGoalModalLabel{{ goal.id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Goal</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form method="POST" action="{% url 'update_goal' goal.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label>Goal Type:</label>
+                      <select name="goaltype" class="form-control" required>
+                        <option value="weightloss" {% if goal.goal_type == 'weightloss' %}selected{% endif %}>Weight Loss</option>
+                        <option value="musclegain" {% if goal.goal_type == 'musclegain' %}selected{% endif %}>Muscle Gain</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Target Metrics:</label>
+                      <input type="text" name="targetmetrics" class="form-control" value="{{ goal.target_metrics }}" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Timeframe:</label>
+                      <input type="date" name="timeframe" class="form-control" value="{{ goal.timeframe }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Update Goal</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% empty %}
+          <tr>
+            <td colspan="4" class="text-center">No goals set.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+    <!-- Buttons row -->
+    <div class="d-flex justify-content-between mt-4">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addGoalModal">Add New Goal</button>
+      <a href="{% url 'userlogin' %}" class="btn btn-outline-danger">Back to User Login</a>
+    </div>
+    
+    <!-- Add Goal Modal -->
+    <div class="modal fade" id="addGoalModal" tabindex="-1" aria-labelledby="addGoalModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Set a New Goal</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label>Goal Type:</label>
+                <select name="goaltype" class="form-control" required>
+                  <option value="weightloss">Weight Loss</option>
+                  <option value="musclegain">Muscle Gain</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Target Metrics:</label>
+                <input type="text" name="targetmetrics" class="form-control" placeholder="Enter target metrics" required>
+              </div>
+              <div class="form-group">
+                <label>Timeframe:</label>
+                <input type="date" name="timeframe" class="form-control" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Set Goal</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .goal-setting-section {
+    padding: 100px 0 50px;
+    background: linear-gradient(to right, #a8e0ff, #f0f4c3);
+    color: #333;
+  }
+  .table {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  .btn {
+    border-radius: 5px;
+  }
+</style>
+
+<!-- Bootstrap & jQuery -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock %}

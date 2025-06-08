@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Styling -->
+<style>
+    body {
+        background-color: #f4f7f6;
+        font-family: 'Arial', sans-serif;
+    }
+    .container-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        flex-wrap: wrap;
+        padding: 40px;
+    }
+    .info-card {
+        max-width: 400px;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        text-align: center;
+    }
+    h1 {
+        color: #2c3e50;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+        padding-top: 80px; /* Ensures space below the navbar */
+    }
+    p {
+        font-size: 18px;
+        font-weight: 500;
+        color: #34495e;
+        margin: 10px 0;
+    }
+    .btn-custom {
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        text-transform: uppercase;
+        width: 100%;
+        display: block;
+        background-color: #e74c3c;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+    }
+    .btn-custom:hover {
+        background-color: #c0392b;
+    }
+    #chartContainer {
+        width: 100%;
+        max-width: 450px;
+        height: 450px;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #nutritionalChart {
+        width: 100% !important;
+        height: 100% !important;
+    }
+</style>
+
+<!-- Content -->
+<div class="container mt-5">
+    <h1>Nutritional Analysis</h1>
+    <div class="container-wrapper">
+        <div class="info-card">
+            <p><strong>Total Calories:</strong> {{ total_calories }}</p>
+            <p><strong>Total Protein:</strong> {{ total_protein }}g</p>
+            <p><strong>Total Carbs:</strong> {{ total_carbs }}g</p>
+            <p><strong>Total Fat:</strong> {{ total_fat }}g</p>
+            <br>
+            <a href="{% url 'userlogin' %}" class="btn btn-custom">Back to Home</a>
+        </div>
+        
+        <!-- Chart Section -->
+        <div id="chartContainer">
+            <canvas id="nutritionalChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Load Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var totalProtein = parseFloat("{{ total_protein|default:0 }}");
+        var totalCarbs = parseFloat("{{ total_carbs|default:0 }}");
+        var totalFat = parseFloat("{{ total_fat|default:0 }}");
+
+        var ctx = document.getElementById('nutritionalChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Protein', 'Carbs', 'Fat'],
+                datasets: [{
+                    label: 'Nutritional Breakdown',
+                    data: [totalProtein, totalCarbs, totalFat],
+                    backgroundColor: [
+                        'rgba(41, 128, 185, 0.6)',
+                        'rgba(39, 174, 96, 0.6)',
+                        'rgba(211, 84, 0, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(41, 128, 185, 1)',
+                        'rgba(39, 174, 96, 1)',
+                        'rgba(211, 84, 0, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: "rgba(0, 0, 0, 0.1)"
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock %}

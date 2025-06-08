@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <h1 class="text-center mb-4">Users Registration</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in details %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Meal Entries</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Food</th>
+                    <th>Quantity</th>
+                    <th>User Name</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in mealentries %}
+                <tr>
+                    <td>{{ entry.food.name }}</td>
+                    <td>{{ entry.quantity }}</td>
+                    <td>{{ entry.user.name }}</td>
+                    <td>{{ entry.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Goals</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Goal Type</th>
+                    <th>Target Metrics</th>
+                    <th>User Name</th>
+                    <th>Timeframe</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for goal in goals %}
+                <tr>
+                    <td>{{ goal.goal_type }}</td>
+                    <td>{{ goal.target_metrics }}</td>
+                    <td>{{ goal.user.name }}</td>
+                    <td>{{ goal.timeframe }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Food Details</h1>
+    <div class="d-flex justify-content-between mb-3">
+        <h3>Food List</h3>
+        <a href="{% url 'addfood' %}" class="btn btn-primary">Add Food</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Carbs</th>
+                    <th>Fat</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for food in fooddetails %}
+                <tr>
+                    <td>{{ food.name }}</td>
+                    <td>{{ food.calories }}</td>
+                    <td>{{ food.protein }}</td>
+                    <td>{{ food.carbs }}</td>
+                    <td>{{ food.fat }}</td>
+                    <td>
+                        <a href="{% url 'update' id=food.id %}" class="btn btn-warning btn-sm">Update</a>
+                        <a href="{% url 'delete' id=food.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

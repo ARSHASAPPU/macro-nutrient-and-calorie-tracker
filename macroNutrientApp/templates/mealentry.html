@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+
+    body {
+        background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+       
+        
+    }
+
+    .meal-entry-form {
+        width: 100%;
+        max-width: 600px; /* Adjust as needed */
+        margin: 0 auto; /* Center the form */
+    }
+
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px; /* Space between rows */
+    }
+
+    .form-col {
+        flex: 1; /* Equal width for columns */
+        margin-right: 10px; /* Space between columns */
+    }
+
+    .form-col:last-child {
+        margin-right: 0; /* Remove margin for the last column */
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+        width: 100%; /* Full width for inputs */
+        padding: 10px; /* Padding for inputs */
+        box-sizing: border-box; /* Include padding in width */
+        border: 1px solid #ced4da; /* Bootstrap-like border */
+        border-radius: 5px; /* Rounded corners */
+        transition: border-color 0.3s; /* Smooth transition for border color */
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="date"]:focus {
+        border-color: cornflowerblue; /* Change border color on focus */
+        outline: none; /* Remove default outline */
+    }
+
+    button {
+        margin-top: 2px;
+        background-color:  #0a2351;
+        padding: 10px; /* Padding for button */
+        cursor: pointer; /* Pointer cursor for button */
+        border-radius: 5px; /* Rounded corners */
+        color: white;
+        border: none; /* Remove default border */
+        width: 100%; /* Full width for button */
+        transition: background-color 0.3s; /* Smooth transition for background color */
+    }
+
+    button:hover {
+        background-color: cornflowerblue;/* Change background color on hover */
+        
+    }
+
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center items horizontally */
+    }
+
+    .container-inside {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 50px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 500px;
+        margin: 100px auto; /* Center the container */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+
+    .btn-container {
+        text-align: center; /* Center the buttons */
+        margin-top: 20px; /* Space above buttons */
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a {
+        text-decoration: none; /* Remove underline from links */
+        color: cornflowerblue; /* Link color */
+        padding: 10px 20px; /* Padding for links */
+        border: 1px solid cornflowerblue; /* Border for links */
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    }
+
+    a:hover {
+        color: white; /* Change text color on hover */
+        background-color: cornflowerblue; /* Change background color on hover */
+    }
+</style>
+<body>
+<!-- meal entry section -->
+<div class="container pt-5">
+
+    <div class="container-inside"> 
+        <h1>Meal Entry Form</h1><br><br>
+
+        <form method="POST" class="meal-entry-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="form-row">
+                    <!-- <div class="form-col goal">
+                        
+                        <select name="goal" required class="rounded border-0 w-100 h-100">
+                            <option value="" disabled selected>Select Goal</option>
+                            {% for goal in goals %}
+                                <option value="{{ goal.id }}">{{ goal.goal_type }} - {{ goal.target_metrics }} - {{ goal.timeframe }}</option>
+                            {% endfor %}
+                        </select>
+                    </div> -->
+                    <div class="form-col food">
+                        <select name="food" required class="rounded border-0 w-100 h-100">
+                            <option value="" disabled selected>Select Food</option>
+                            {% for food in foods %}
+                                <option value="{{ food.name }}">{{ food.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-col quantity">
+                        <input type="number" placeholder="Quantity" name="quantity" required class="rounded border-0">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-col date">
+                        <input type="date" name="date" required class="rounded border-0">
+                    </div>
+                    <div class="form-col add-meal">
+                        <button type="submit">Add Meal</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="btn-container">
+    <a href="{% url 'nutritionalanalysis' %}" class="btn btn-danger">Go to Nutritional Analysis</a><br><br>
+    <a href="{% url 'userlogin' %}" class="btn btn-danger">Go back to userlogin</a>
+</div>
+</body>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+body{
+    background-color: rgb(232, 218, 218);
+}
+
+
+.container{
+    width: 50%;
+    height: 50vh;
+    text-align: center;
+    margin: 15%;
+    margin-top: 10%;
+    margin-left: 25%;
+    padding-top: 7%;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color:white;
+    font-size: 25px;
+}
+
+.create{
+    font-size: 35px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: brown;
+}
+
+.form{
+    padding-top: 10px;
+}
+.form-label{
+    margin-right: 10px;
+}
+.btn{
+    font-size: 25px;
+    color: blue;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

@@ -65,12 +65,6 @@ A web-based application that allows users to track their daily calorie intake an
 
 ---
 
-## 📷 Screenshots
-Home page:
- 
-
-
----
 
 ## 🛠️ Future Enhancements
 

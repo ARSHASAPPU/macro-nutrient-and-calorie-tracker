@@ -88,19 +88,4 @@ A web-based application that allows users to track their daily calorie intake an
 
 ---
 
-## 📃 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙌 Contributions
-
-Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
-
-```
-
----
-
-Let me know if you want to include database models, architecture diagram, API endpoints, or anything else specific.
-```

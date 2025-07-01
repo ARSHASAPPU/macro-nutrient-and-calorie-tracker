@@ -66,9 +66,8 @@ A web-based application that allows users to track their daily calorie intake an
 ---
 
 ## 📷 Screenshots
-
-
-![home page](https://github.com/user-attachments/assets/e7ced7a7-d10a-413b-9656-be5f1ca848bf)
+Home page:
+ 
 
 
 ---
@@ -87,5 +86,4 @@ A web-based application that allows users to track their daily calorie intake an
 * [Arsha Sappu](https://github.com/ARSHASAPPU)
 
 ---
-
 

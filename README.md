@@ -67,9 +67,9 @@ A web-based application that allows users to track their daily calorie intake an
 
 ## 📷 Screenshots
 
-> Add screenshots of your UI here. Example:
-> ![Dashboard](screenshots/dashboard.png)
-> ![Food Log](screenshots/food-log.png)
+
+![home page](https://github.com/user-attachments/assets/e7ced7a7-d10a-413b-9656-be5f1ca848bf)
+
 
 ---
 

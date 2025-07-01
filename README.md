@@ -28,34 +28,34 @@ A web-based application that allows users to track their daily calorie intake an
 ## 📦 Setup Instructions
 
 1. **Clone the repository**
-   ```bash
+  
    git clone https://github.com/ARSHASAPPU/macro-nutrient-and-calorie-tracker.git
    cd macro-nutrient-and-calorie-tracker
 ````
 
 2. **Create a virtual environment**
 
-   ```bash
+  
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
 3. **Install dependencies**
 
-   ```bash
+  
    pip install -r requirements.txt
    ```
 
 4. **Apply migrations**
 
-   ```bash
+  
    python manage.py makemigrations
    python manage.py migrate
    ```
 
 5. **Run the development server**
 
-   ```bash
+   
    python manage.py runserver
    ```
 
